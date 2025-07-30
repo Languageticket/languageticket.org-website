@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - LanguageTicket.org</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #fdd835;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Header */
+        header {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .logo {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        /* Hero */
+        .hero {
+            padding: 60px 0 30px;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95));
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .hero h1 span {
+            color: var(--accent);
+        }
+        /* Pricing Sections */
+        .section {
+            padding: 60px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--accent);
+        }
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .features-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .btn:hover {
+            background: white;
+            border-color: var(--accent);
+        }
+        /* Discount Tables */
+        .discount-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .discount-table th, .discount-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .discount-table th {
+            background: rgba(253, 216, 53, 0.1);
+        }
+        .highlight {
+            background: rgba(253, 216, 53, 0.1);
+            font-weight: 600;
+        }
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        /* Terms Toggle */
+        .terms-toggle {
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+        .terms-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+            padding: 0 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .terms-content.active {
+            max-height: 500px;
+            padding: 20px;
+        }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">LanguageTicket.org</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Simple, <span>Transparent</span> Pricing</h1>
+            <p>Choose the plan that fits your learning goals</p>
+        </div>
+    </section>
+
+    <!-- Individual Students -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>For Individual Students</h2>
+                <p>Per-class pricing with bulk discounts</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- General English -->
+                <div class="pricing-card">
+                    <h3>General English</h3>
+                    <div class="price">350 EGP <span>per class</span></div>
+                    <ul class="features-list">
+                        <li>CEFR-aligned curriculum (A1-C2)</li>
+                        <li>Age-specific groups</li>
+                        <li>Comprehensive skill development</li>
+                    </ul>
+                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                </div>
+
+                <!-- Specific English -->
+                <div class="pricing-card">
+                    <h3>Specific Skills</h3>
+                    <div class="price">400 EGP <span>per class</span></div>
+                    <ul class="features-list">
+                        <li>Listening, Reading, Writing</li>
+                        <li>Speaking & Pronunciation</li>
+                        <li>Grammar Precision</li>
+                    </ul>
+                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                </div>
+
+                <!-- Business English -->
+                <div class="pricing-card">
+                    <h3>Business English</h3>
+                    <div class="price">400 EGP <span>per class</span></div>
+                    <ul class="features-list">
+                        <li>Professional communication</li>
+                        <li>Meetings & Presentations</li>
+                        <li>Industry-specific vocabulary</li>
+                    </ul>
+                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                </div>
+            </div>
+
+            <!-- Bulk Discounts -->
+            <div style="max-width: 800px; margin: 50px auto;">
+                <h3 style="text-align: center; margin-bottom: 20px;">Bulk Booking Discounts</h3>
+                <table class="discount-table">
+                    <tr>
+                        <th>Classes Booked</th>
+                        <th>Discount</th>
+                        <th>Effective Price/Class</th>
+                    </tr>
+                    <tr>
+                        <td>1 class</td>
+                        <td>0%</td>
+                        <td>Full price</td>
+                    </tr>
+                    <tr>
+                        <td>2 classes</td>
+                        <td>5%</td>
+                        <td>332.5-380 EGP</td>
+                    </tr>
+                    <tr>
+                        <td>4 classes</td>
+                        <td>10%</td>
+                        <td>315-360 EGP</td>
+                    </tr>
+                    <tr>
+                        <td>6 classes</td>
+                        <td>15%</td>
+                        <td>297.5-340 EGP</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>8 classes</td>
+                        <td>20%</td>
+                        <td>280-320 EGP</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>10 classes</td>
+                        <td>25%</td>
+                        <td>262.5-300 EGP</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>12 classes</td>
+                        <td>30%</td>
+                        <td>245-280 EGP</td>
+                    </tr>
+                </table>
+                <p style="text-align: center; margin-top: 15px; color: var(--gray);">
+                    Discounts apply to all course types. Credits never expire.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parents Section -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2>For Parents</h2>
+                <p>Special benefits when enrolling multiple children</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3 style="text-align: center; margin-bottom: 20px;">Family Discounts</h3>
+                <table class="discount-table">
+                    <tr>
+                        <th>Children Enrolled</th>
+                        <th>Bonus Classes</th>
+                        <th>Requirements</th>
+                    </tr>
+                    <tr>
+                        <td>1 child</td>
+                        <td>No bonus</td>
+                        <td>Standard pricing applies</td>
+                    </tr>
+                    <tr>
+                        <td>2 children</td>
+                        <td>2 free classes (1 per child)</td>
+                        <td>Book 6+ classes per child</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>2 children</td>
+                        <td>4 free classes (2 per child)</td>
+                        <td>Book 12+ classes per child</td>
+                    </tr>
+                    <tr>
+                        <td>3+ children</td>
+                        <td>3 free classes (1 per child)</td>
+                        <td>Book 6+ classes per child</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>3+ children</td>
+                        <td>6 free classes (2 per child)</td>
+                        <td>Book 12+ classes per child</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-bottom: 15px;">Important Notes:</h4>
+                    <ul style="list-style-position: inside; color: var(--gray);">
+                        <li>Bonus classes are credited after completing paid classes</li>
+                        <li>Applies to children under 18 or with special needs</li>
+                        <li>Bonus classes are non-refundable</li>
+                    </ul>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://forms.gle/U4fHKpam2vqH5bEb7" class="btn" target="_blank">Parent Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizations -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>For Organizations</h2>
+                <p>Customized solutions for businesses and institutions</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3 style="margin-bottom: 20px;">Tailored Programs</h3>
+                    <p style="color: var(--gray); margin-bottom: 25px;">
+                        We create custom packages based on your organization's needs, size, and goals.
+                        Pricing starts at cost-plus model with minimal administrative fees.
+                    </p>
+                    <div style="margin: 30px 0;">
+                        <h4 style="margin-bottom: 15px;">Requirements:</h4>
+                        <ul style="list-style: none; color: var(--gray);">
+                            <li>✔ Registered business/organization</li>
+                            <li>✔ Valid tax ID</li>
+                            <li>✔ Non-profits: Proof of status</li>
+                        </ul>
+                    </div>
+                    <a href="https://forms.gle/9KsDTFVaYm5e8Jr9A" class="btn" target="_blank">Request Proposal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Payment Options</h2>
+                <p>Secure and convenient payment methods</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <i class="fas fa-credit-card"></i> Credit/Debit Cards
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-wallet"></i> Vodafone Cash
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-mobile-alt"></i> Mobile Wallets
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-money-bill-wave"></i> Bank Installments*
+                    </div>
+                </div>
+                <p style="color: var(--gray); font-size: 0.9rem;">
+                    * Installment fees vary by bank. Contact your bank for details before purchasing.
+                </p>
+                <p style="color: var(--gray); margin-top: 15px;">
+                    All payments are processed in EGP or equivalent at current exchange rates.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions -->
+    <section class="section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3 style="text-align: center; margin-bottom: 20px;">Terms & Conditions</h3>
+                
+                <div class="terms-toggle" onclick="toggleTerms()">▼ View Full Terms</div>
+                <div class="terms-content" id="termsContent">
+                    <h4>General Terms:</h4>
+                    <ul style="margin-bottom: 20px; color: var(--gray);">
+                        <li>All prices are in Egyptian Pounds (EGP)</li>
+                        <li>Classes must be booked within 6 months of purchase</li>
+                        <li>72-hour cancellation policy for refunds</li>
+                        <li>LanguageTicket reserves the right to change teachers if needed</li>
+                    </ul>
+                    
+                    <h4>Privacy Policy:</h4>
+                    <ul style="margin-bottom: 20px; color: var(--gray);">
+                        <li>We collect minimal data required for service delivery</li>
+                        <li>Payment information is processed securely via third-party processors</li>
+                        <li>We never share your data without consent</li>
+                    </ul>
+                    
+                    <h4>Platform Usage:</h4>
+                    <ul style="color: var(--gray);">
+                        <li>Access to LanguageTicket.com, .org, and associated platforms requires compliance with our policies</li>
+                        <li>Unauthorized commercial use is prohibited</li>
+                        <li>Issues should be reported to support@languageticket.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <div class="logo" style="color: white; margin-bottom: 15px;">LanguageTicket</div>
+                <div style="color: rgba(255,255,255,0.7);">Quality language education for all</div>
+            </div>
+            <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                &copy; 2025 LanguageTicket.org. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle terms content
+        function toggleTerms() {
+            const terms = document.getElementById('termsContent');
+            terms.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
