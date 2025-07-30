@@ -1,2 +1,4 @@
-/*  /index.html  200
-/   /index.html  200
+/* /index.html 200
+/pricingpage.html /pricing.html 301
+/Applypage.html /apply.html 301
+/Morepage.html /more.html 301  <!-- Corrected to more.html -->
