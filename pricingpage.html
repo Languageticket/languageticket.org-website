@@ -5,208 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - LanguageTicket.org</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --accent: #fdd835;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #ffffff;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        /* Header */
-        header {
-            background: white;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        .logo {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 1.5rem;
-        }
-        /* Hero */
-        .hero {
-            padding: 60px 0 30px;
-            text-align: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95));
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .hero h1 span {
-            color: var(--accent);
-        }
-        /* Pricing Sections */
-        .section {
-            padding: 60px 0;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        .section-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-        }
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .pricing-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-top: 5px solid var(--accent);
-        }
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        .price span {
-            font-size: 1rem;
-            color: var(--gray);
-        }
-        .features-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        .features-list li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-        .features-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent);
-            color: var(--dark);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .btn:hover {
-            background: white;
-            border-color: var(--accent);
-        }
-        /* Discount Tables */
-        .discount-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .discount-table th, .discount-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        .discount-table th {
-            background: rgba(253, 216, 53, 0.1);
-        }
-        .highlight {
-            background: rgba(253, 216, 53, 0.1);
-            font-weight: 600;
-        }
-        /* Payment Methods */
-        .payment-methods {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        .payment-method {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        /* Terms Toggle */
-        .terms-toggle {
-            color: var(--accent);
-            cursor: pointer;
-            text-decoration: underline;
-            font-size: 0.9rem;
-        }
-        .terms-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background: #f8f9fa;
-            padding: 0 20px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        .terms-content.active {
-            max-height: 500px;
-            padding: 20px;
-        }
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="floating-background" id="floatingBackground"></div>
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="pricingpage.html">Pricing</a>
+        <a href="Applypage.html">Apply</a>
+        <a href="Morepage.html">More Info</a>
+    </nav>
+
     <header>
         <div class="container">
             <div class="logo">LanguageTicket.org</div>
@@ -489,6 +299,49 @@
             const terms = document.getElementById('termsContent');
             terms.classList.toggle('active');
         }
+
+        // Floating elements animation (from index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingBg = document.getElementById('floatingBackground');
+            const colors = ['#fdd835', '#2c3e50', '#6c757d', '#f8f9fa'];
+            const shapes = ['circle', 'square', 'triangle'];
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                const size = Math.random() * 50 + 20;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 15 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                element.style.position = 'absolute';
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.left = `${posX}%`;
+                element.style.top = `${posY}%`;
+                element.style.opacity = '0.1';
+                element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+                
+                if (shape === 'circle') {
+                    element.style.borderRadius = '50%';
+                } else if (shape === 'triangle') {
+                    element.style.width = '0';
+                    element.style.height = '0';
+                    element.style.borderLeft = `${size/2}px solid transparent`;
+                    element.style.borderRight = `${size/2}px solid transparent`;
+                    element.style.borderBottom = `${size}px solid ${color}`;
+                    element.style.background = 'transparent';
+                }
+                
+                if (shape !== 'triangle') {
+                    element.style.backgroundColor = color;
+                }
+                
+                floatingBg.appendChild(element);
+            }
+        });
     </script>
 </body>
 </html>
