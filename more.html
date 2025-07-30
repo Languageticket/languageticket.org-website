@@ -532,7 +532,7 @@
 <body>
     <div class="floating-background" id="floatingBackground"></div>
     
-    <!-- Header -->
+    <!-- Header - UPDATED NAVIGATION -->
     <header>
         <div class="container">
             <div class="header-container">
@@ -542,9 +542,9 @@
                 </div>
                 <nav>
                     <a href="/">Home</a>
-                    <a href="pricingpage.html">Pricing</a>
-                    <a href="Applypage.html">Apply</a>
-                    <a href="Morepage.html">More Info</a>
+                    <a href="/pricing.html">Pricing</a> <!-- Fixed link -->
+                    <a href="/apply.html">Apply</a> <!-- Fixed link -->
+                    <a href="/more.html">More Info</a> <!-- Fixed link -->
                 </nav>
             </div>
         </div>
@@ -798,8 +798,54 @@
             });
         });
 
-        // Floating background animation script from index.html
-        // [PASTE THE FULL SCRIPT FROM INDEX.HTML HERE]
+        // Floating background animation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingBackground = document.getElementById('floatingBackground');
+            const icons = ['fa-book', 'fa-globe', 'fa-comments', 'fa-graduation-cap', 'fa-language', 'fa-user-friends', 'fa-lightbulb'];
+            
+            // Create floating color blobs
+            for (let i = 0; i < 8; i++) {
+                const blob = document.createElement('div');
+                blob.className = 'floating-element';
+                blob.style.width = (50 + Math.random() * 200) + 'px';
+                blob.style.height = blob.style.width;
+                blob.style.backgroundColor = i % 2 === 0 ? '#fdd835' : '#2c3e50';
+                blob.style.top = Math.random() * 100 + 'vh';
+                blob.style.left = Math.random() * 100 + 'vw';
+                blob.style.animation = `float ${40 + Math.random() * 40}s infinite ${Math.random() * 5}s ease-in-out`;
+                blob.style.opacity = 0.05 + Math.random() * 0.05;
+                floatingBackground.appendChild(blob);
+            }
+            
+            // Create floating icons
+            for (let i = 0; i < 12; i++) {
+                const icon = document.createElement('i');
+                icon.className = `fas floating-icon ${icons[Math.floor(Math.random() * icons.length)]}`;
+                icon.style.top = Math.random() * 100 + 'vh';
+                icon.style.left = Math.random() * 100 + 'vw';
+                icon.style.fontSize = (2 + Math.random() * 3) + 'rem';
+                icon.style.opacity = 0.05 + Math.random() * 0.05;
+                icon.style.animationDuration = (30 + Math.random() * 30) + 's';
+                icon.style.animationDelay = (Math.random() * 10) + 's';
+                floatingBackground.appendChild(icon);
+            }
+
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
     </script>
 </body>
 </html>
