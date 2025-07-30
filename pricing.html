@@ -10,11 +10,12 @@
 <body>
     <div class="floating-background" id="floatingBackground"></div>
     
+    <!-- Navigation - UPDATED -->
     <nav>
         <a href="/">Home</a>
-        <a href="pricingpage.html">Pricing</a>
-        <a href="Applypage.html">Apply</a>
-        <a href="Morepage.html">More Info</a>
+        <a href="/pricing.html">Pricing</a> <!-- Fixed link -->
+        <a href="/apply.html">Apply</a> <!-- Fixed link -->
+        <a href="/more.html">More Info</a> <!-- Fixed link -->
     </nav>
 
     <header>
@@ -39,7 +40,7 @@
             </div>
 
             <div class="pricing-grid">
-                <!-- General English -->
+                <!-- General English - UPDATED BUTTON -->
                 <div class="pricing-card">
                     <h3>General English</h3>
                     <div class="price">350 EGP <span>per class</span></div>
@@ -48,10 +49,10 @@
                         <li>Age-specific groups</li>
                         <li>Comprehensive skill development</li>
                     </ul>
-                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                    <a href="/apply.html" class="btn" target="_blank">Join Waitlist</a>
                 </div>
 
-                <!-- Specific English -->
+                <!-- Specific English - UPDATED BUTTON -->
                 <div class="pricing-card">
                     <h3>Specific Skills</h3>
                     <div class="price">400 EGP <span>per class</span></div>
@@ -60,10 +61,10 @@
                         <li>Speaking & Pronunciation</li>
                         <li>Grammar Precision</li>
                     </ul>
-                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                    <a href="/apply.html" class="btn" target="_blank">Join Waitlist</a>
                 </div>
 
-                <!-- Business English -->
+                <!-- Business English - UPDATED BUTTON -->
                 <div class="pricing-card">
                     <h3>Business English</h3>
                     <div class="price">400 EGP <span>per class</span></div>
@@ -72,7 +73,7 @@
                         <li>Meetings & Presentations</li>
                         <li>Industry-specific vocabulary</li>
                     </ul>
-                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Join Waitlist</a>
+                    <a href="/apply.html" class="btn" target="_blank">Join Waitlist</a>
                 </div>
             </div>
 
@@ -128,7 +129,7 @@
         </div>
     </section>
 
-    <!-- Parents Section -->
+    <!-- Parents Section - UPDATED BUTTON -->
     <section class="section" style="background-color: #f8f9fa;">
         <div class="container">
             <div class="section-header">
@@ -179,7 +180,7 @@
                     </ul>
                 </div>
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="https://forms.gle/U4fHKpam2vqH5bEb7" class="btn" target="_blank">Parent Waitlist</a>
+                    <a href="/apply.html" class="btn" target="_blank">Parent Waitlist</a>
                 </div>
             </div>
         </div>
@@ -300,7 +301,7 @@
             terms.classList.toggle('active');
         }
 
-        // Floating elements animation (from index.html)
+        // Floating elements animation
         document.addEventListener('DOMContentLoaded', function() {
             const floatingBg = document.getElementById('floatingBackground');
             const colors = ['#fdd835', '#2c3e50', '#6c757d', '#f8f9fa'];
