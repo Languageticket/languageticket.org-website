@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Portal - How It Works</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #fdd835;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --text: #333;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="1"/></svg>');
+            background-size: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #e9ecef;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 50px;
+            clear: both;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-step:nth-child(odd) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-step:nth-child(even) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-icon {
+            position: absolute;
+            top: 20px;
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border: 4px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark);
+            box-shadow: 0 0 0 4px var(--accent);
+        }
+        
+        .timeline-step:nth-child(odd) .step-icon {
+            right: -25px;
+        }
+        
+        .timeline-step:nth-child(even) .step-icon {
+            left: -25px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: #f8f9fa;
+            border: none;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-question span {
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .faq-answer p {
+            padding: 0 20px 20px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Teacher Qualifications */
+        .qualifications {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .qual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .qual-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .qual-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qual-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .qual-card h3 i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .qual-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .qual-card li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--gray);
+        }
+        
+        .qual-card li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* FOOTER STYLES */
+        .compact-footer {
+            background: #fff;
+            border-top: 1px solid #e9ecef;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-section {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            min-width: 200px;
+        }
+        
+        .contact-btn:hover {
+            background: #fef7e0;
+            transform: translateY(-3px);
+            border-color: #fdd835;
+            box-shadow: 0 5px 15px rgba(253, 216, 53, 0.15);
+        }
+        
+        .contact-btn i {
+            font-size: 1.2rem;
+            color: #fdd835;
+            min-width: 24px;
+        }
+        
+        .btn-text {
+            text-align: left;
+        }
+        
+        .btn-text .label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+        
+        .btn-text .value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .social-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid #e9ecef;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: #fef7e0;
+            border-color: #fdd835;
+        }
+        
+        .social-icon.tiktok:hover { color: #000; }
+        .social-icon.instagram:hover { color: #e1306c; }
+        .social-icon.youtube:hover { color: #ff0000; }
+        .social-icon.facebook:hover { color: #1877f2; }
+        
+        .copyright {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .logo {
+            font-weight: 700;
+            color: #fdd835;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-step {
+                margin-left: 60px;
+                width: auto;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                float: none !important;
+            }
+            
+            .step-icon {
+                left: -60px !important;
+                right: auto !important;
+            }
+            
+            .qual-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            /* Footer mobile styles */
+            .compact-footer {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+            }
+            
+            .contact-section {
+                flex-direction: column;
+            }
+            
+            .social-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .social-icons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .copyright {
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">LT</div>
+                    <div class="logo-text">LanguageTicket</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your English <span>Learning Journey</span></h1>
+            <p>Discover our streamlined process to start learning English with qualified teachers</p>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Simple steps to begin your personalized English learning experience</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-icon">1</div>
+                    <div class="timeline-content">
+                        <h3>Online Application</h3>
+                        <p>Complete our quick application form to share your goals and preferences. This takes about 90 seconds.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-icon">2</div>
+                    <div class="timeline-content">
+                        <h3>Free Assessment</h3>
+                        <p>We'll conduct a free evaluation within 72 hours to understand your current level and learning style.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-icon">3</div>
+                    <div class="timeline-content">
+                        <h3>Teacher Matching</h3>
+                        <p>We match you with a qualified teacher based on your needs. Onboarding is completed within one week.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-icon">4</div>
+                    <div class="timeline-content">
+                        <h3>Begin Learning</h3>
+                        <p>Start your personalized English lessons and track your progress with regular feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Answers to common questions about our programs and processes</p>
+            </div>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <button class="faq-question">How soon can I start after applying?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>We conduct assessments within 72 hours and complete onboarding within one week of application.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Can I choose my teacher?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>We match students with teachers based on compatibility. Both students and teachers can request a change if the match isn't working well.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">What devices can I use for lessons?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>You can access lessons from any smartphone, tablet, or laptop with a stable internet connection.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">What is your rescheduling policy?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>You can reschedule sessions with at least 72 hours advance notice at no additional cost.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">What qualifications do teachers have?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Our teachers have 3-5 years of experience on average and hold relevant teaching certifications.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Do you offer group classes?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>We offer group classes for general English programs, but skill-based courses are one-on-one. Organizations can request custom group programs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">What is the minimum age for students?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>We accept students as young as 4 years old, with no upper age limit.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">What is your cancellation policy?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Cancellations made 72+ hours in advance are free. Hourly-based packages have a 7-day refund policy. Course-based packages offer partial refunds.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Do you offer financial aid?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>We do not currently offer financial aid or scholarships.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Do all teachers have advanced degrees?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Most of our teachers hold relevant qualifications, but not all have advanced degrees.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Teacher Qualifications -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Teacher Qualifications</h2>
+                <p>Our educators meet rigorous standards to ensure quality instruction</p>
+            </div>
+            
+            <div class="qualifications">
+                <div class="qual-grid">
+                    <div class="qual-card">
+                        <h3><i class="fas fa-graduation-cap"></i> Education & Certification</h3>
+                        <ul>
+                            <li>Bachelor's degree or equivalent in relevant field</li>
+                            <li>TEFL/TESOL certification (minimum 120 hours)</li>
+                            <li>Specialized training in our methodology</li>
+                            <li>Ongoing professional development</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="qual-card">
+                        <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h3>
+                        <ul>
+                            <li>3-5 years of teaching experience on average</li>
+                            <li>Experience with diverse student populations</li>
+                            <li>Proven track record of student success</li>
+                            <li>Specializations in test prep or business English</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="qual-card">
+                        <h3><i class="fas fa-star"></i> Personal Qualities</h3>
+                        <ul>
+                            <li>Excellent communication skills</li>
+                            <li>Patience and adaptability</li>
+                            <li>Cultural sensitivity and awareness</li>
+                            <li>Passion for teaching and student success</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <div class="compact-footer">
+        <div class="contact-section">
+            <a href="https://wa.me/201558665466" class="contact-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <div class="btn-text">
+                    <div class="label">Via WhatsApp</div>
+                    <div class="value">Students/Parents/Orgs</div>
+                </div>
+            </a>
+            
+            <a href="mailto:support@languageticket.org" class="contact-btn">
+                <i class="fas fa-envelope"></i>
+                <div class="btn-text">
+                    <div class="label">Via Email</div>
+                    <div class="value">Students/Parents/Orgs</div>
+                </div>
+            </a>
+            
+            <a href="mailto:teacher@languageticket.org" class="contact-btn">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div class="btn-text">
+                    <div class="label">Teachers Only</div>
+                    <div class="value">Via Email</div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="social-section">
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@languageticket" class="social-icon tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/languageticket/" class="social-icon instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@LanguageTicket" class="social-icon youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1728Frbi7V/" class="social-icon facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <div class="logo">LanguageTicket</div>
+                <div>&copy; 2025 All rights reserved</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't already active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
