@@ -1,1 +1,79 @@
+/* styles.css */
+:root {
+    --accent: #fdd835;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --text: #333;
+    --gray: #6c757d;
+    --border: #e9ecef;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 80px; /* Added for fixed nav */
+    overflow-x: hidden;
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Navigation Menu */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+    width: 60%;
+}
+
+/* Rest of your existing CSS... */
+[PASTE ALL THE REMAINING CSS FROM YOUR STYLE TAG HERE]
