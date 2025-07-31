@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Portal - How It Works | LanguageTicket</title>
     
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NLNLLTZL');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPD65FS01T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CPD65FS01T');
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -72,60 +89,18 @@
             padding: 0 15px;
         }
         
-        /* Header */
+        /* Simplified Header */
         header {
             background: white;
             padding: 20px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .logo-text {
+        .header-title {
             font-size: 24px;
             font-weight: 700;
             color: var(--dark);
-        }
-        
-        nav a {
-            color: var(--dark);
-            text-decoration: none;
-            margin: 0 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.3s;
-            font-weight: 500;
-        }
-        
-        nav a:hover {
-            background: rgba(253, 216, 53, 0.2);
         }
         
         /* Hero Section */
@@ -566,18 +541,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
             /* Footer mobile styles */
             .compact-footer {
                 flex-direction: column;
@@ -608,25 +571,18 @@
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLNLLTZL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Floating Background -->
     <div class="floating-background" id="floatingBackground"></div>
     
-    <!-- Header -->
+    <!-- Simplified Header -->
     <header>
         <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                    <div class="logo-icon">LT</div>
-                    <div class="logo-text">LanguageTicket</div>
-                </div>
-                <nav>
-                    <a href="/">Home</a>
-                    <a href="/pricing.html">Pricing</a>
-                    <a href="/apply.html">Apply</a>
-                    <a href="/more.html">More Info</a>
-                </nav>
-            </div>
+            <div class="header-title">How It Works</div>
         </div>
     </header>
     
