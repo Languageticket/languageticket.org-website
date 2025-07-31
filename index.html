@@ -5,26 +5,531 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover - LanguageTicket.org</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #fdd835;
+            --accent: #fdd835;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --text: #333;
+            --gray: #6c757d;
+            --border: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Floating Background Styles */
+        .floating-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(20px);
+            animation-timing-function: ease-in-out;
+            opacity: 0.15;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            animation: float 30s infinite ease-in-out;
+            opacity: 0.15;
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10vw, 10vh) rotate(10deg); }
+            50% { transform: translate(0, 20vh) rotate(0deg); }
+            75% { transform: translate(-10vw, 10vh) rotate(-10deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 30px;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="1"/></svg>');
+            background-size: 80px;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        /* Container Styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(253, 216, 53, 0.25);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            box-shadow: 0 6px 18px rgba(253, 216, 53, 0.35);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .about-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(253, 216, 53, 0.05);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .feature-icon {
+            background: var(--secondary);
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .feature-text h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(253, 216, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+        }
+        
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .resource-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .note-box {
+            background: rgba(253, 216, 53, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Footer Section */
+        .compact-footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            width: 300px;
+        }
+        
+        .contact-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .contact-btn i {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+        
+        .btn-text .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .btn-text .value {
+            font-weight: bold;
+        }
+        
+        .social-section {
+            text-align: center;
+            padding: 0 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .copyright .logo {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content, 
+            .services-grid, 
+            .benefits-grid, 
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Menu - UPDATED -->
+    <!-- Floating Background Elements -->
+    <div class="floating-background" id="floatingBackground"></div>
+    
+    <!-- Navigation Menu -->
     <nav>
         <a href="/">Home</a>
         <a href="/pricing.html">Pricing</a>
         <a href="/apply.html">Apply</a>
-        <a href="/more.html">More Info</a> <!-- Corrected to more.html -->
+        <a href="/more.html">More Info</a>
     </nav>
 
-    <!-- Floating Background Elements -->
-    <div class="floating-background" id="floatingBackground"></div>
-    
-    <!-- Hero Section - UPDATED -->
+    <!-- Hero Section -->
     <section class="hero">
-            <h1>Start Your Language Journey with <span>LanguageTicket</span></h1>
         <div class="container">
+            <h1>Start Your Language Journey with <span>LanguageTicket</span></h1>
             <p>Personalized learning experiences through 1-on-1 lessons, group classes, and tailored courses for all levels.</p>
-            <!-- Added Apply Now button -->
             <a href="/apply.html" class="btn">Apply Now</a>
         </div>
     </section>
@@ -115,7 +620,7 @@
         </div>
     </section>
     
-    <!-- What We Do Section - UPDATED -->
+    <!-- What We Do Section -->
     <section class="section services-section">
         <div class="container">
             <div class="section-header">
@@ -153,7 +658,6 @@
                 </div>
             </div>
             
-            <!-- Added See Pricing button -->
             <div style="text-align: center; margin-top: 40px;">
                 <a href="/pricing.html" class="btn">See Pricing</a>
             </div>
@@ -314,34 +818,49 @@
     <script>
         // Create floating background elements
         document.addEventListener('DOMContentLoaded', function() {
-            const floatingBackground = document.getElementById('floatingBackground');
-            const icons = ['fa-book', 'fa-globe', 'fa-comments', 'fa-graduation-cap', 'fa-language', 'fa-user-friends', 'fa-lightbulb'];
+            const floatingBg = document.getElementById('floatingBackground');
+            const icons = ['comment', 'globe', 'book', 'language', 'graduation-cap', 
+                          'user-friends', 'lightbulb', 'star', 'certificate', 'award'];
             
-            // Create floating color blobs
-            for (let i = 0; i < 8; i++) {
-                const blob = document.createElement('div');
-                blob.className = 'floating-element';
-                blob.style.width = (50 + Math.random() * 200) + 'px';
-                blob.style.height = blob.style.width;
-                blob.style.backgroundColor = i % 2 === 0 ? '#fdd835' : '#2c3e50';
-                blob.style.top = Math.random() * 100 + 'vh';
-                blob.style.left = Math.random() * 100 + 'vw';
-                blob.style.animation = `float ${40 + Math.random() * 40}s infinite ${Math.random() * 5}s ease-in-out`;
-                blob.style.opacity = 0.05 + Math.random() * 0.05;
-                floatingBackground.appendChild(blob);
+            // Create floating circles
+            for (let i = 0; i < 15; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('floating-element');
+                
+                // Random properties
+                const size = Math.random() * 150 + 50;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const hue = Math.floor(Math.random() * 360);
+                
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${posX}%`;
+                circle.style.top = `${posY}%`;
+                circle.style.background = `hsla(${hue}, 70%, 60%, 0.1)`;
+                circle.style.animationDuration = `${Math.random() * 40 + 20}s`;
+                circle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                floatingBg.appendChild(circle);
             }
             
             // Create floating icons
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 8; i++) {
                 const icon = document.createElement('i');
-                icon.className = `fas floating-icon ${icons[Math.floor(Math.random() * icons.length)]}`;
-                icon.style.top = Math.random() * 100 + 'vh';
-                icon.style.left = Math.random() * 100 + 'vw';
-                icon.style.fontSize = (2 + Math.random() * 3) + 'rem';
-                icon.style.opacity = 0.05 + Math.random() * 0.05;
-                icon.style.animationDuration = (30 + Math.random() * 30) + 's';
-                icon.style.animationDelay = (Math.random() * 10) + 's';
-                floatingBackground.appendChild(icon);
+                icon.classList.add('fas', `fa-${icons[i]}`, 'floating-icon');
+                
+                // Random properties
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const size = Math.random() * 2 + 1;
+                
+                icon.style.left = `${posX}%`;
+                icon.style.top = `${posY}%`;
+                icon.style.fontSize = `${size}rem`;
+                icon.style.animationDuration = `${Math.random() * 40 + 20}s`;
+                icon.style.animationDelay = `${Math.random() * 10}s`;
+                
+                floatingBg.appendChild(icon);
             }
             
             // Intersection Observer for scroll animations
