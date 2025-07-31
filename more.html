@@ -26,15 +26,8 @@
             background-color: #ffffff;
             color: var(--text);
             line-height: 1.6;
-            /* Hide scrollbar */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
-        }
-        
-        body::-webkit-scrollbar {
-            display: none;
         }
         
         /* Floating Background Elements */
@@ -120,6 +113,20 @@
             color: var(--dark);
         }
         
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: rgba(253, 216, 53, 0.2);
+        }
+        
         /* Hero Section */
         .hero {
             padding: 80px 0 50px;
@@ -157,6 +164,12 @@
             max-width: 700px;
             margin: 30px auto;
             border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-box h3 {
+            color: var(--dark);
+            margin: 0;
         }
         
         /* Section Styling */
@@ -555,6 +568,13 @@
             .header-container {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            nav {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
             }
             
             /* Footer mobile styles */
