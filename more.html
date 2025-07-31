@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Portal - How It Works | LanguageTicket</title>
+    <title>Discover - LanguageTicket.org</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -65,14 +65,8 @@
             100% { transform: translate(0, 0) rotate(0deg); }
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
-        header {
+        /* Navigation */
+        nav {
             background: white;
             padding: 20px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -80,37 +74,9 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--dark);
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--dark);
+            flex-wrap: wrap;
         }
         
         nav a {
@@ -127,14 +93,16 @@
             background: rgba(253, 216, 53, 0.2);
         }
         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
         /* Hero Section */
         .hero {
             padding: 80px 0 50px;
             text-align: center;
-            background: 
-                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="1"/></svg>');
-            background-size: 40px;
             position: relative;
             z-index: 2;
         }
@@ -157,19 +125,24 @@
             color: var(--gray);
         }
         
-        .highlight-box {
-            background: rgba(253, 216, 53, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            max-width: 700px;
-            margin: 30px auto;
-            border-left: 4px solid var(--accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            border: 2px solid var(--accent);
         }
         
-        .highlight-box h3 {
+        .btn:hover {
+            background: transparent;
             color: var(--dark);
-            margin: 0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 216, 53, 0.3);
         }
         
         /* Section Styling */
@@ -210,216 +183,233 @@
             margin: 20px auto 0;
         }
         
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
+        /* About Us Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
         
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #e9ecef;
-            left: 50%;
-            margin-left: -2px;
-        }
-        
-        .timeline-step {
-            position: relative;
-            margin-bottom: 50px;
-            clear: both;
-        }
-        
-        .timeline-content {
-            position: relative;
-            width: 45%;
-            padding: 20px;
+        .about-card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent);
         }
         
-        .timeline-step:nth-child(odd) .timeline-content {
-            float: left;
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .timeline-step:nth-child(even) .timeline-content {
-            float: right;
+        .about-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
         }
         
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        .about-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         
-        .step-icon {
-            position: absolute;
-            top: 20px;
-            z-index: 10;
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
             width: 50px;
             height: 50px;
+            background: rgba(253, 216, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .feature-text h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .feature-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            position: relative;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
             background: var(--accent);
-            border: 4px solid white;
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
-            color: var(--dark);
-            box-shadow: 0 0 0 4px var(--accent);
         }
         
-        .timeline-step:nth-child(odd) .step-icon {
-            right: -25px;
-        }
-        
-        .timeline-step:nth-child(even) .step-icon {
-            left: -25px;
-        }
-        
-        .timeline-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .timeline-content p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        /* FAQ */
-        .faq-section {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: #f8f9fa;
-            border: none;
-            padding: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-        
-        .faq-question span {
-            font-size: 1.5rem;
-            color: var(--accent);
-            min-width: 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-question span {
-            transform: rotate(45deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        .faq-answer p {
-            padding: 0 20px 20px;
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-        
-        /* Teacher Qualifications */
-        .qualifications {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .qual-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        
-        .qual-card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--accent);
-            transition: transform 0.3s ease;
-        }
-        
-        .qual-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .qual-card h3 {
+        .service-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
             color: var(--dark);
+            margin: 15px 0;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(253, 216, 53, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .qual-card h3 i {
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
             color: var(--accent);
-            font-size: 1.5rem;
         }
         
-        .qual-card ul {
-            list-style: none;
-            padding-left: 0;
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
         }
         
-        .qual-card li {
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
+        .benefit-card p {
             color: var(--gray);
+            font-size: 0.95rem;
         }
         
-        .qual-card li::before {
-            content: '•';
-            position: absolute;
-            left: 10px;
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(253, 216, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
             color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
         }
         
-        /* FOOTER STYLES */
+        .resource-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .resource-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .note-box {
+            background: rgba(253, 216, 53, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer Section */
         .compact-footer {
             background: #fff;
             border-top: 1px solid #e9ecef;
@@ -532,76 +522,66 @@
             color: #fdd835;
         }
         
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            .section-header h2 {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+            }
+            
+            nav a {
+                margin: 5px;
+                padding: 8px 15px;
+            }
+            
+            .hero h1 {
                 font-size: 1.8rem;
             }
             
-            .timeline::before {
-                left: 30px;
+            .section {
+                padding: 40px 0;
             }
             
-            .timeline-step {
-                margin-left: 60px;
-                width: auto;
-            }
-            
-            .timeline-content {
-                width: 100%;
-                float: none !important;
-            }
-            
-            .step-icon {
-                left: -60px !important;
-                right: auto !important;
-            }
-            
-            .qual-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            /* Footer mobile styles */
             .compact-footer {
                 flex-direction: column;
-                align-items: stretch;
-                padding: 20px;
+                text-align: center;
             }
             
             .contact-section {
                 flex-direction: column;
+                width: 100%;
             }
             
             .social-section {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .social-icons {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .copyright {
-                justify-content: center;
-                margin-top: 15px;
             }
         }
     </style>
@@ -610,200 +590,249 @@
     <!-- Floating Background -->
     <div class="floating-background" id="floatingBackground"></div>
     
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                </div>
-                <nav>
-                    <a href="/">Home</a>
-                    <a href="/pricing.html">Pricing</a>
-                    <a href="/apply.html">Apply</a>
-                    <a href="/more.html">More Info</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/apply.html">Apply</a>
+        <a href="/more.html">More Info</a>
+    </nav>
     
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Start Your Language Journey with <span>LanguageTicket</span></h1>
-            <p>Discover our streamlined process to master English with qualified teachers</p>
-            
-            <div class="highlight-box">
-                <h3>Free CEFR Evaluation with any program enrollment</h3>
-            </div>
+            <h1 class="animate-on-scroll">Start Your Language Journey with <span>LanguageTicket</span></h1>
+            <p class="animate-on-scroll">Personalized learning experiences through 1-on-1 lessons, group classes, and tailored courses for all levels.</p>
+            <a href="/apply.html" class="btn animate-on-scroll">Apply Now</a>
         </div>
     </section>
     
-    <!-- Timeline Section -->
-    <section class="section" style="background-color: #f8f9fa;">
+    <!-- About Us Section -->
+    <section id="about" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Simple steps to begin your personalized English learning experience</p>
+                <h2>About Us</h2>
+                <p>Crafting impactful language journeys for every learner</p>
             </div>
             
-            <div class="timeline">
-                <div class="timeline-step">
-                    <div class="step-icon">1</div>
-                    <div class="timeline-content">
-                        <h3>Online Application</h3>
-                        <p>Complete our quick application form to share your goals and preferences. This takes about 90 seconds.</p>
+            <div class="about-content">
+                <div class="about-card animate-on-scroll">
+                    <h3>We Transform Language Goals into Reality</h3>
+                    <p>Every lesson is carefully designed with personalized learning, expert guidance, and measurable progress.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Results-Oriented Approach</h4>
+                                <p>Data-driven methods that deliver measurable improvements in language proficiency.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Global Expertise</h4>
+                                <p>Teaching experience across diverse cultures and learning styles.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Dedicated Support</h4>
+                                <p>Continuous guidance to ensure your learning journey stays on track.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="timeline-step">
-                    <div class="step-icon">2</div>
-                    <div class="timeline-content">
-                        <h3>Free Assessment</h3>
-                        <p>We'll conduct a free evaluation within 72 hours to understand your current level and learning style.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-step">
-                    <div class="step-icon">3</div>
-                    <div class="timeline-content">
-                        <h3>Teacher Matching</h3>
-                        <p>We match you with a qualified teacher based on your needs. Onboarding is completed within one week.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-step">
-                    <div class="step-icon">4</div>
-                    <div class="timeline-content">
-                        <h3>Begin Learning</h3>
-                        <p>Start your personalized English lessons and track your progress with regular feedback.</p>
+                <div class="about-card animate-on-scroll">
+                    <h3>Our Story</h3>
+                    <p>Connecting minds and shaping futures through language education.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>The Global Bridge</h4>
+                                <p>Uniting learners with expert teachers to bridge global connections.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-road"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Personalized Journeys</h4>
+                                <p>Custom learning paths designed for breakthroughs in fluency.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Confidence Building</h4>
+                                <p>Developing skills to thrive in international environments.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- FAQ Section -->
+    <!-- What We Do Section -->
+    <section class="section services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What We Offer</h2>
+                <p>How LanguageTicket elevates English proficiency</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.15rem; max-width: 800px; margin: 0 auto 40px; color: var(--dark);">
+                Build confidence, communication skills, and global connections through structured learning.
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-number">1</div>
+                    <h3>Learning Analysis</h3>
+                    <p>Transform progress data into action with personalized analytics to elevate student success.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-number">2</div>
+                    <h3>Curriculum Strategy</h3>
+                    <p>Structured roadmaps for every proficiency level with clear fluency goals.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-number">3</div>
+                    <h3>Educational Consulting</h3>
+                    <p>Expert guidance to maximize potential from beginner to advanced mastery.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-number">4</div>
+                    <h3>Progress Evaluation</h3>
+                    <p>Comprehensive skill assessments with continuous improvement plans.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="/pricing.html" class="btn animate-on-scroll">See Pricing</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Join Us Section -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
-                <p>Answers to common questions about our programs and processes</p>
+                <h2>Why Choose Us</h2>
+                <p>The LanguageTicket Advantage</p>
             </div>
             
-            <div class="faq-section">
-                <div class="faq-item">
-                    <button class="faq-question">How soon can I start after applying?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>We conduct assessments within 72 hours and complete onboarding within one week of application.</p>
+            <p style="text-align: center; font-size: 1.15rem; max-width: 800px; margin: 0 auto 40px; color: var(--dark);">
+                Participants gain access to certified educators, structured fluency progression, cultural exchange, and measurable skill development.
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
+                    <h3>Expert Insights</h3>
+                    <p>Gain valuable knowledge from experienced educators with proven teaching methodologies.</p>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">Can I choose my teacher?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>We match students with teachers based on compatibility. Both students and teachers can request a change if the match isn't working well.</p>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
                     </div>
+                    <h3>Learning Community</h3>
+                    <p>Connect with global learners, practice conversational skills, and expand cultural awareness.</p>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">What devices can I use for lessons?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>You can access lessons from any smartphone, tablet, or laptop with a stable internet connection.</p>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-comments"></i>
                     </div>
+                    <h3>Interactive Lessons</h3>
+                    <p>Engaging learning experiences designed to build confidence and practical skills.</p>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">What is your rescheduling policy?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>You can reschedule sessions with at least 72 hours advance notice at no additional cost.</p>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What qualifications do teachers have?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>Our teachers have 3-5 years of experience on average and hold relevant teaching certifications.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Do you offer group classes?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>We offer group classes for general English programs, but skill-based courses are one-on-one. Organizations can request custom group programs.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What is the minimum age for students?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>We accept students as young as 4 years old, with no upper age limit.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What is your cancellation policy?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>Cancellations made 72+ hours in advance are free. Hourly-based packages have a 7-day refund policy. Course-based packages offer partial refunds.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Do you offer financial aid?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>We do not currently offer financial aid or scholarships.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Do all teachers have advanced degrees?<span>+</span></button>
-                    <div class="faq-answer">
-                        <p>Most of our teachers hold relevant qualifications, but not all have advanced degrees.</p>
-                    </div>
+                    <h3>Stay Updated</h3>
+                    <p>Receive exclusive learning resources, success stories, and language insights.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Teacher Qualifications -->
-    <section class="section" style="background-color: #f8f9fa;">
+    <!-- Resources Section -->
+    <section id="resources" class="section resources-section">
         <div class="container">
             <div class="section-header">
-                <h2>Teacher Qualifications</h2>
-                <p>Our educators meet rigorous standards to ensure quality instruction</p>
+                <h2>Get Started</h2>
+                <p>Begin your personalized learning journey</p>
             </div>
             
-            <div class="qualifications">
-                <div class="qual-grid">
-                    <div class="qual-card">
-                        <h3><i class="fas fa-graduation-cap"></i> Education & Certification</h3>
-                        <ul>
-                            <li>Bachelor's degree or equivalent in relevant field</li>
-                            <li>TEFL/TESOL certification (minimum 120 hours)</li>
-                            <li>Specialized training in our methodology</li>
-                            <li>Ongoing professional development</li>
-                        </ul>
+            <div class="resources-grid">
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-user-graduate"></i>
                     </div>
-                    
-                    <div class="qual-card">
-                        <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h3>
-                        <ul>
-                            <li>3-5 years of teaching experience on average</li>
-                            <li>Experience with diverse student populations</li>
-                            <li>Proven track record of student success</li>
-                            <li>Specializations in test prep or business English</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="qual-card">
-                        <h3><i class="fas fa-star"></i> Personal Qualities</h3>
-                        <ul>
-                            <li>Excellent communication skills</li>
-                            <li>Patience and adaptability</li>
-                            <li>Cultural sensitivity and awareness</li>
-                            <li>Passion for teaching and student success</li>
-                        </ul>
-                    </div>
+                    <h3>Student Waitlist</h3>
+                    <p>For learners of all ages seeking English mastery</p>
+                    <a href="https://forms.gle/rVbzzQUqaFQwtM477" class="btn" target="_blank">Apply Now</a>
                 </div>
+                
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Parent Waitlist</h3>
+                    <p>For parents enrolling children in our programs</p>
+                    <a href="https://forms.gle/U4fHKpam2vqH5bEb7" class="btn" target="_blank">Apply Now</a>
+                </div>
+                
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Teacher Application</h3>
+                    <p>Join our team of certified language educators</p>
+                    <a href="https://forms.gle/Nq8pP2pzbAVYbYdr7" class="btn" target="_blank">Apply Now</a>
+                </div>
+                
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Organization Application</h3>
+                    <p>For institutions seeking custom language programs</p>
+                    <a href="https://forms.gle/9KsDTFVaYm5e8Jr9A" class="btn" target="_blank">Apply Now</a>
+                </div>
+            </div>
+            
+            <div class="note-box animate-on-scroll">
+                <p><strong>Bookings available after waitlist acceptance. Process is quick and straightforward.</strong></p>
             </div>
         </div>
     </section>
@@ -819,7 +848,7 @@
                 </div>
             </a>
             
-            <a href="mailto:support@languageticket.com" class="contact-btn">
+            <a href="mailto:support@languageticket.org" class="contact-btn">
                 <i class="fas fa-envelope"></i>
                 <div class="btn-text">
                     <div class="label">Via Email</div>
@@ -827,7 +856,7 @@
                 </div>
             </a>
             
-            <a href="mailto:teacher@languageticket.com" class="contact-btn">
+            <a href="mailto:teacher@languageticket.org" class="contact-btn">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <div class="btn-text">
                     <div class="label">Teachers Only</div>
@@ -858,9 +887,9 @@
             </div>
         </div>
     </div>
-
+    
     <script>
-        // Floating background elements
+        // Create floating background elements
         document.addEventListener('DOMContentLoaded', function() {
             const floatingBg = document.getElementById('floatingBackground');
             const icons = ['comment', 'globe', 'book', 'language', 'graduation-cap', 
@@ -907,22 +936,21 @@
                 floatingBg.appendChild(icon);
             }
             
-            // FAQ toggle functionality
-            document.querySelectorAll('.faq-question').forEach(button => {
-                button.addEventListener('click', () => {
-                    const faqItem = button.parentElement;
-                    const isActive = faqItem.classList.contains('active');
-                    
-                    // Close all FAQ items
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Open clicked item if it wasn't already active
-                    if (!isActive) {
-                        faqItem.classList.add('active');
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-on-scroll');
                     }
                 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            // Observe all elements with the class
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
             });
         });
     </script>
